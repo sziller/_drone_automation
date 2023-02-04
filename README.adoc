@@ -1,0 +1,15 @@
+= _drone_automation
+Automated and manual stearing of flying drones - quadrochopters
+Project will include:
+
+* Python-Kivy based UI for Smartphones
+
+== UI for smartphone
+A basic stearing surface to enable manual drone control combined with camera view
+
+== further plans
+Preprogrammed functions such as:
+
+* parenting help following kids
+* automated transporting routines
+* charge controlled return-home functions
