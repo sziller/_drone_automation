@@ -35,6 +35,7 @@ from kivy.uix.camera import Camera, CoreCamera
 # Video needs: ffpyplayer
 ######################################################################
 
+
 class SalletScreenManager(ScreenManager):
     def __init__(self, **kwargs):
         super(SalletScreenManager, self).__init__(**kwargs)
@@ -88,13 +89,12 @@ class NavBar(BoxLayout):
                 App.get_running_app().root.current_screen.ids.navbar.ids[buttinst].disabled = False
                 App.get_running_app().root.current_screen.ids.navbar.ids[buttinst].state = "normal"
 
+
 class OperationAreaBox(BoxLayout):
     pass
 
 
 class OpAreaMain(OperationAreaBox):
-
-
 
     def on_press_dn_yaw(self, inst):
         print("yaw: <{:>8}>: {:>2}".format("pressed", inst.dir))
@@ -132,8 +132,10 @@ class OpAreaMain(OperationAreaBox):
     def on_release_dn_throttle(self, inst):
         print("throttle : <{:>8}>: {}".format("released", inst.dir))
 
+
 class player(VideoPlayer):
     pass
+
 
 class DroneControl(App):
     """=== Class name: CayMan ========================================================================================
@@ -165,12 +167,14 @@ class DroneControl(App):
         # vid.allow_stretch = True
         # return vid
         return self.window_content
-        #return Camera(play=True)
+        # return Camera(play=True)
 
-class testcam(BoxLayout):
+
+class TestCam(BoxLayout):
     def __init__(self, **kwargs):
-        super(testcam, self).__init__(**kwargs)
+        super(TestCam, self).__init__(**kwargs)
         pass
+
 
 if __name__ == "__main__":
     from kivy.lang import Builder  # to freely pick kivy files
