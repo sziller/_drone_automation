@@ -24,8 +24,16 @@ from kivy.core.window import Window
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.image import AsyncImage
+from kivy.uix.video import Video
+from kivy.uix.videoplayer import VideoPlayer
+from kivy.uix.camera import Camera, CoreCamera
+
 # Window.maximize()
 
+######################################################################
+# Camera needs: opencv-python
+# Video needs: ffpyplayer
+######################################################################
 
 class SalletScreenManager(ScreenManager):
     def __init__(self, **kwargs):
@@ -86,6 +94,8 @@ class OperationAreaBox(BoxLayout):
 
 class OpAreaMain(OperationAreaBox):
 
+
+
     def on_press_dn_yaw(self, inst):
         print("yaw: <{:>8}>: {:>2}".format("pressed", inst.dir))
 
@@ -122,6 +132,9 @@ class OpAreaMain(OperationAreaBox):
     def on_release_dn_throttle(self, inst):
         print("throttle : <{:>8}>: {}".format("released", inst.dir))
 
+class player(VideoPlayer):
+    pass
+
 class DroneControl(App):
     """=== Class name: CayMan ========================================================================================
     Child of built in class: App
@@ -146,8 +159,18 @@ class DroneControl(App):
         smng.transition.direction = screen_direction
 
     def build(self):
+        # vid = VideoPlayer(source = "./video/shoes2.mov")
+        # vid.state = "play"
+        # vid.options = {'eos': 'loop'}
+        # vid.allow_stretch = True
+        # return vid
         return self.window_content
+        #return Camera(play=True)
 
+class testcam(BoxLayout):
+    def __init__(self, **kwargs):
+        super(testcam, self).__init__(**kwargs)
+        pass
 
 if __name__ == "__main__":
     from kivy.lang import Builder  # to freely pick kivy files

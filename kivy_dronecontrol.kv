@@ -28,9 +28,9 @@
 #:set background_image "./images/Leather_WP.jpg"
 #:set phimage_link "./images/Drone_04WP.png"
 
-## ------------------------------------------------------------------
+## ----------------------------------------------------------------------------------------------
 ## transitions imported for screenchanges:
-## ------------------------------------------------------------------
+## ----------------------------------------------------------------------------------------------
 #:import NoTransition kivy.uix.screenmanager.NoTransition
 ## -----------------------------------------------------------------------------
 #:import CardTransition kivy.uix.screenmanager.CardTransition
@@ -41,14 +41,12 @@
 #:import SwapTransition kivy.uix.screenmanager.SwapTransition
 #:import WipeTransition kivy.uix.screenmanager.WipeTransition
 
-## ----------------------------------------------------------------------
-## Root Widget definition: Screenhandler                        START   -
-## ----------------------------------------------------------------------
+## ----------------------------------------------------------------------------------------------
+## Root Widget definition: ScreenManager                            ScreenManager       START   -
+## ----------------------------------------------------------------------------------------------
 SalletScreenManager:
     id: "ThisIsYourROOTWidget"
     canvas.before:
-        #Color:
-        #    rgba: (0.05, 0.15, 0.05, 1)
         Rectangle:
             pos: self.pos
             size: self.size
@@ -57,10 +55,6 @@ SalletScreenManager:
         id: screen_intro
     ScreenMain:
         id: screen_main
-
-## ----------------------------------------------------------------------
-## Root Widget definition: Screenhandler                        ENDED   -
-## ----------------------------------------------------------------------
 
 <SalletScreenManager@ScreenManager>:
     ## transition: NoTransition()
@@ -71,6 +65,11 @@ SalletScreenManager:
     ## transition: SlideTransition()
     ## transition: SwapTransition(duration=.5)
     ## transition: WipeTransition()
+
+## ----------------------------------------------------------------------------------------------
+## Root Widget definition: ScreenManager                            ScreenManager       ENDED   -
+## ----------------------------------------------------------------------------------------------
+
 
 <InScreenWindow@BoxLayout>:
     orientation: "vertical"
@@ -125,6 +124,8 @@ SalletScreenManager:
 <OperationAreaBox@BoxLayout>:
 
 <OpAreaIntro@OperationAreaBox>:
+    Button:
+        background_normal: phimage_link
 
 <OpAreaMain@OperationAreaBox>:
     orientation: "vertical"
@@ -140,81 +141,105 @@ SalletScreenManager:
             pos_hint: {"center_y": 0.5}
             cols: 3
             rows: 3
-            Label:
+            LabelSteerPH:
+                used_img: ""
             ButtonDroneNav:
                 id: DN_throttle_up
-                text: "up"
+                ## text: "up"
                 dir: 1
                 on_press: root.on_press_dn_throttle(self)
                 on_state: root.on_state_dn_throttle(self)
                 on_release: root.on_release_dn_throttle(self)
-            Label:
+                background_normal: "./icons_button/ArrowUP.png"
+                background_down: "./icons_button/ArrowUP-down.png"
+            LabelSteerPH:
+                used_img: ""
             ButtonDroneNav:
                 id: DN_yaw_left
                 dir: 1
-                text: "turn\nleft"
+                ## text: "turn\nleft"
                 on_press: root.on_press_dn_yaw(self)
                 on_state: root.on_state_dn_yaw(self)
                 on_release: root.on_release_dn_yaw(self)
-            Label:
+                background_normal: "./icons_button/ArrowLEFT.png"
+                background_down: "./icons_button/ArrowLEFT-down.png"
+            LabelSteerPH:
             ButtonDroneNav:
                 id: DN_yaw_right
                 dir: -1
-                text: "turn\nright"
+                ## text: "turn\nright"
                 on_press: root.on_press_dn_yaw(self)
                 on_state: root.on_state_dn_yaw(self)
                 on_release: root.on_release_dn_yaw(self)
-            Label:
+                background_normal: "./icons_button/ArrowRIGHT.png"
+                background_down: "./icons_button/ArrowRIGHT-down.png"
+            LabelSteerPH:
+                used_img: ""
             ButtonDroneNav:
                 id: DN_throttle_down
-                text: "down"
+                ## text: "down"
                 dir: -1
                 on_press: root.on_press_dn_throttle(self)
                 on_state: root.on_state_dn_throttle(self)
                 on_release: root.on_release_dn_throttle(self)
-            Label:
+                background_normal: "./icons_button/ArrowDOWN.png"
+                background_down: "./icons_button/ArrowDOWN-down.png"
+            LabelSteerPH:
+                used_img: ""
         BoxLayout:
             size_hint: 0.6, 1
-            Label:
-                text: "flight_data"
+            Camera:
+                id: camera
+                resolution: (640, 480)
+                play: True
+            # Label:
+            #    text: "flight_data"
         GridLayout:
             size_hint: 0.2, 0.5
             pos_hint: {"center_y": 0.5}
             cols: 3
             rows: 3
-            Label:
+            LabelSteerPH:
             ButtonDroneNav:
                 id: DN_pitch_forward
-                text: "forward"
+                ## text: "forward"
                 dir: 1
                 on_press: root.on_press_dn_pitch(self)
                 on_state: root.on_state_dn_pitch(self)
                 on_release: root.on_release_dn_pitch(self)
-            Label:
+                background_normal: "./icons_button/ArrowUP.png"
+                background_down: "./icons_button/ArrowUP-down.png"
+            LabelSteerPH:
             ButtonDroneNav:
                 id: DN_roll_left
-                text: "strafe\nleft"
+                ## text: "strafe\nleft"
                 dir: -1
                 on_press: root.on_press_dn_roll(self)
                 on_state: root.on_state_dn_roll(self)
                 on_release: root.on_release_dn_roll(self)
-            Label:
+                background_normal: "./icons_button/ArrowLEFT.png"
+                background_down: "./icons_button/ArrowLEFT-down.png"
+            LabelSteerPH:
             ButtonDroneNav:
                 id: DN_roll_right
-                text: "strafe\nright"
+                ## text: "strafe\nright"
                 dir: 1
                 on_press: root.on_press_dn_roll(self)
                 on_state: root.on_state_dn_roll(self)
                 on_release: root.on_release_dn_roll(self)
-            Label:
+                background_normal: "./icons_button/ArrowRIGHT.png"
+                background_down: "./icons_button/ArrowRIGHT-down.png"
+            LabelSteerPH:
             ButtonDroneNav:
                 id: DN_pitch_back
-                text: "back"
+                ## text: "back"
                 dir: -1
                 on_press: root.on_press_dn_pitch(self)
                 on_state: root.on_state_dn_pitch(self)
                 on_release: root.on_release_dn_pitch(self)
-            Label:
+                background_normal: "./icons_button/ArrowDOWN.png"
+                background_down: "./icons_button/ArrowDOWN-down.png"
+            LabelSteerPH:
 
 <NavBar@BoxLayout>:
     id: navbar
@@ -267,7 +292,7 @@ SalletScreenManager:
     text_size: self.size
     color: (1, 1, 1)
     padding: (2, 2)
-    text: "DrNav"
+    text: ""
     halign: 'center'  ## center, right, left
     valign: 'middle'  ## middle, top, bottom
 
@@ -285,3 +310,12 @@ SalletScreenManager:
     font_name: fn_title
 
 <LabelPH@Label>:
+
+<LabelSteerPH@Label>:
+    used_img: None
+    ##AsyncImage:
+    ##    pos: root.pos
+    ##    size: root.size
+    ##    keep_ratio: False
+    ##    allow_stretch: True
+    ##    source: root.used_img
